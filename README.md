@@ -74,11 +74,11 @@ The system contains 10 blocks. Let's break down these blocks:
 
 ## Clock Domain 1 (REF_CLK)
 
-### 1. RegFile (Register File)
+1. **RegFile (Register File)**
 
 The RegFile block is a data storage unit, used for data storage and retrieval operations.
 
-### 2. ALU (Arithmetic Logic Unit)
+2. **ALU (Arithmetic Logic Unit)**
 
 The ALU is the computational block of the system, capable of executing multiple operations:
 - Arithmetic: Addition, Subtraction, Multiplication, Division
@@ -86,39 +86,39 @@ The ALU is the computational block of the system, capable of executing multiple 
 - Comparisons: Equality (A = B), Greater than (A > B), Less than (A < B)
 - Shifts: Left and Right by 1 bit
 
-### 3. Clock Gating
+3. **Clock Gating**
 
 The Clock Gating block optimizes power consumption by controlling clock signals during idle periods, reducing dynamic power consumption.
 
-### 4. SYS_CTRL (System Controller)
+4. **SYS_CTRL (System Controller)**
 
 SYS_CTRL acts as the finite state machine of the system. It receives multiple frames and acts according to these frames.
 
 ## Clock Domain 2 (UART_CLK)
 
-### 5. UART_TX (UART Transmitter)
+5. **UART_TX (UART Transmitter)**
 
 UART_TX is responsible for transmitting data to an external device or master via UART communication.
 
-### 6. UART_RX (UART Receiver)
+6. **UART_RX (UART Receiver)**
 
 UART_RX receives incoming data and commands from external sources and sends them to the system controller if there are no errors in the frames.
 
-### 7. PULSE_GEN (Pulse Generator)
+7. **PULSE_GEN (Pulse Generator)**
 
 PULSE_GEN generates a pulse signal, converting the `Busy` signal High time (11 clock cycles of UART_TX clock period) into just one pulse to the `RD_INC` signal.
 
-### 8. Clock Dividers
+8. **Clock Dividers**
 
 Clock Dividers are essential for generating clocks with different frequencies and ratios.
 
 ## Data Synchronizers
 
-### 9. RST Synchronizer
+9. **RST Synchronizer**
 
 The RST Synchronizer ensures synchronization of the de-assertion of asynchronous reset active low signals, so as not to violate recovery time, and to make sure flip flops don't enter a metastability state.
 
-### 10. Data Synchronizer
+10. **Data Synchronizer**
 
 The Data Synchronizer employs a unique synchronization scheme to address Clock Domain Crossing challenges, ensuring reliable data transfer between different clock domains.
 
